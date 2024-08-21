@@ -24,8 +24,7 @@
   - CREATE DATABASE new_database_name;
 
  ### 4. Table Migration 
-  - php yii migrate/fresh
-
+  - php yii migrate (/fresh if data reset)
 
     ### Migrations
 
@@ -44,10 +43,6 @@
 
     ### Add Junction Table
     - php yii migrate/create create_junction_table_for_post_and_tag_tables --fields="created_at:dateTime"
-
-    ### Relations via a Junction Table 
-    In data modelling, multiplicity between two related tables is many-to-many, junction-table is usually introduced. 
-
 
 ### 5. Import Commands
   - ./yii import/all ( will run ImportController/actionAll)
@@ -74,8 +69,9 @@ new (yii\Web\Application($config))->run();
   - like actionIndex() , actionView() , actionCreate() , actionUpdate() , actionDelete()
   - ControllerMap is used when using third-party controllers and you do not have control over their class names. 
    eg - in application configurations
-[
-    'controllerMap' => [
+
+        [
+        'controllerMap' => [
         // declares "account" controller using a class name
         'account' => 'app\controllers\UserController',
 
@@ -83,9 +79,7 @@ new (yii\Web\Application($config))->run();
         'article' => [
             'class' => 'app\controllers\PostController',
             'enableCsrfValidation' => false,
-        ],
-    ],
-]
+        ],],]
 
 ### Models
    - extends yii\base\Model
@@ -132,36 +126,37 @@ new (yii\Web\Application($config))->run();
 
 ### Requests
 
-   Yii::$app:->request;
+    Yii::$app:->request;
 
    ### get body params
-   Yii::$app:->request->bodyParams;
-   $request->getBodyParams("");
+    Yii::$app:->request->bodyParams;
+    $request->getBodyParams("");
 
    ### get query params
-   Yii::$app:->request->queryParams;
+    Yii::$app:->request->queryParams;
 
    Header names are case insensitive. And the newly registered headers are not sent to the user until the yii\web\Response::send() method is called.
 
 ### Response
 
    With Status Code
-
-   - yii\web\BadRequestHttpException: status code 400.
-   - yii\web\ConflictHttpException: status code 409.
-   - yii\web\ForbiddenHttpException: status code 403.
-   - yii\web\GoneHttpException: status code 410.
-   - yii\web\MethodNotAllowedHttpException: status code 405.
-   - yii\web\NotAcceptableHttpException: status code 406.
-   - yii\web\NotFoundHttpException: status code 404.
-   - yii\web\ServerErrorHttpException: status code 500.
-   - yii\web\TooManyRequestsHttpException: status code 429.
-   - yii\web\UnauthorizedHttpException: status code 401.
-   - yii\web\UnsupportedMediaTypeHttpException: status code 415.
+  
+    - yii\web\BadRequestHttpException: status code 400.  
+    - yii\web\ConflictHttpException: status code 409.
+    - yii\web\ForbiddenHttpException: status code 403.
+    - yii\web\GoneHttpException: status code 410.
+    - yii\web\MethodNotAllowedHttpException: status code 405.
+    - yii\web\NotAcceptableHttpException: status code 406.
+    - yii\web\NotFoundHttpException: status code 404.
+    - yii\web\ServerErrorHttpException: status code 500.
+    - yii\web\TooManyRequestsHttpException: status code 429.
+    - yii\web\UnauthorizedHttpException: status code 401.
+    - yii\web\UnsupportedMediaTypeHttpException: status code 415.
 
   ### For sending back Files
-   - sendFile() , sendContentAsFile() , sendStreamAsFile()
-   return \Yii::$app->response->sendFile('path/to/file.txt');
+   
+    sendFile() , sendContentAsFile() , sendStreamAsFile()
+    return \Yii::$app->response->sendFile('path/to/file.txt');
 
   CSRF (Cross site request frogery)
 
@@ -186,9 +181,9 @@ new (yii\Web\Application($config))->run();
   - a way to prevent conflicts that may occur when a single row of data is being updated by multiple users
 
   When user A and B is editing the same row, user A edits first and after recently, user B make edits to the same row , it will show Error Message - like StaleObject Exception.
+  
+  In Controller - 
 
-    In Controller - 
-    
     try{ } catch(StaleObjectException $e){
 
     }
@@ -211,7 +206,7 @@ new (yii\Web\Application($config))->run();
 
    ### Declaring Relations
 
-    - hasMany/hasOne
+   - hasMany/hasOne
 
     class Customer extends ActiveRecord{
 
@@ -221,10 +216,10 @@ new (yii\Web\Application($config))->run();
 
       }
     }
-
-    - To Access customer orders
-
-     $customer = Customer::findOne(123);
+    
+   - To Access customer orders
+  
+    $customer = Customer::findOne(123);
 
      $customer->orders;
 
@@ -233,9 +228,9 @@ new (yii\Web\Application($config))->run();
      ->orderBy('id')
      ->all();
 
-     OR
-
-     class Customer extends ActiveRecord{
+   - Or 
+     
+    class Customer extends ActiveRecord{
 
       public funtion getBigOrders($threshold = 100){
 
@@ -247,48 +242,33 @@ new (yii\Web\Application($config))->run();
     }
 
    ### Junction Table
-
-   class Order extends ActiveRecord{
+   
+   ### Relations via a Junction Table 
+   In data modelling, multiplicity between two related tables is many-to-many, junction-table is usually introduced. 
+  
+   
+    class Order extends ActiveRecord{
       public function getItems(){
             return $this->hasMany(Item::class, ['id' => 'item_id'])
             -> viaTable('order_item', ['order_id','id']);
       }
-   }
+      }
 
    ### Lazy Loading and Eager Loading
    - Eager Loading is to solve N+1 query count problem
-   - implementation ( Customer()::find()->with([
+   - implementation (
+     
+    Customer()::find()->with([
       'country',
       'orders' => function ($query){
          $query->andWhere(['status' => Order::STATUS_ACTIVE])
-      }
-   ]) )
+      }]);
 
    ### Joining Tables
     $customers = Customer::find()
       ->joinWith('orders')
       ->where(['order.status' => Order::STATUS_ACTIVE])
       ->all();
-
-
-   ### Migrations
-   
-    ### Create Table
-    - php yii migrate/create create_post_table --fields="title:string(12):notNull:unique,body:text"
-    - php yii migrate/create create_post_table --fields="author_id:integer:notNull:foreignKey(user),category_id:integer:defaultValue(1):foreignKey,title:string,body:text"
-
-    ### Drop Table
-    - php yii migrate/create drop_post_table ----fields="title:string(12):notNull:unique,body:text"
-
-    ### Add Column
-    - php yii migrate/create add_position_column_to_post_table --fields="position:integer"
-
-    ### Drop Column
-    - php yii migrate/create drop_position_column_from_post_table --fields="position:integer"
-
-    ### Add Junction Table
-    - php yii migrate/create create_junction_table_for_post_and_tag_tables --fields="created_at:dateTime"
-
 
 ### Restful API Services
 
@@ -300,8 +280,7 @@ new (yii\Web\Application($config))->run();
 
   ### Customizing Error Response
   
-  - return [
-    // ...
+     return [
     'components' => [
         'response' => [
             'class' => 'yii\web\Response',
@@ -316,12 +295,12 @@ new (yii\Web\Application($config))->run();
                 }
             },
         ],
-    ],
-  ];
+    ], 
+    ];
 
   ### Mailer
   
-  Yii::$app->mailer->compose()
+    Yii::$app->mailer->compose()
         ->setFrom("from@gmail.com")
         ->setTo("to@gmail.com")
         ->setSubject("Subject")
@@ -331,7 +310,7 @@ new (yii\Web\Application($config))->run();
 
   Complex Example
 
-  - $message = Yii::$app->mailer->compose();
+    $message = Yii::$app->mailer->compose();
     if (Yii::$app->user->isGuest) {
     $message->setFrom('from@domain.com');
     } else {

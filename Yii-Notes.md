@@ -13,7 +13,7 @@
  ### 1. Link Herd
   - herd link crm 
 
- ### 2. Extra Add Ons
+ ### 2. Composer Install
   - composer install
   - cp config/sample.secret_params.php config/secret_params.php
 

@@ -15,8 +15,9 @@
   - Having thousands of nodes in single DOM -> Virtual DOM = represent actual DOM with Javascript Objects
   - DOM Vs Virtual DOM ( Blue Print Vs Actual)
   
-  ### Render Functions
-  DOM to virtual DOM - by 
+### Core Features of Vue
+  1. Declarative Rendering - using of import
+  2. Reactivity  - usage of ref()
 
 # Vite Notes
 

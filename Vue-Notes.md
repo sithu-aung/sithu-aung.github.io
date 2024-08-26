@@ -360,6 +360,12 @@ v-model directive helps to
           @close="isLogoutDialogOpen = false" @ok="logout"
           />
 
+### Component Registeration - Global vs Local
+
+- Global ( using app.component() )
+- Local ( import ComponentA from './ComponentA.vue'; in <script setup> </script>) - not even availble for descendant components.
+
+
 
      
 

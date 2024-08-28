@@ -365,6 +365,40 @@ v-model directive helps to
 - Global ( using app.component() )
 - Local ( import ComponentA from './ComponentA.vue'; in <script setup> </script>) - not even availble for descendant components.
 
+- Use <PascalCase /> for Naming
+- set Alias in Vite.config.js for ( for ./src/components -> @/components )
+    
+         import { fileURLToPath , URL } from 'node:url'
+         alias: {
+            '@' : fileURLToPath(new URL('./src',import.meta.url))
+         }
+
+### Props
+  - with macro defineProps()
+  - any type of value can be passed to a prop - (Number, Boolean, Array, Object)
+  - one way data flow - child component can't mutate parent's state
+  - parent component change -> child component refresh
+  - To change in child componet only, can use with computed() or adding to a ref()
+  - To change to parent component, use Emits.
+
+### V-model = props + events
+    <!-- Parent.vue -->
+    <Child v-model="countModel" />
+-
+    <!-- Child.vue -->
+      <script setup>
+      const model = defineModel()
+
+      function update() {
+        model.value++
+      }
+      </script>
+
+      <template>
+        <div>Parent bound v-model is: {{ model }}</div>
+        <button @click="update">Increment</button>
+      </template>
+
 
 
      

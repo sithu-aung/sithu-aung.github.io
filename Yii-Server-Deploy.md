@@ -19,7 +19,7 @@
  - CREATE DATABASE social;
 
 ### clone project
- - git clone https://secret_key@github.com/sithu-aung/social-test.git
+ - sudo git clone https://secret_key@github.com/sithu-aung/social-test.git
 
 ### install composer
  - sudo apt install composer 

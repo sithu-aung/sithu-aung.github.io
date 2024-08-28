@@ -383,14 +383,15 @@ v-model directive helps to
 
 ### V-model = props + events
     <!-- Parent.vue -->
+    var countModel = ref(1);
     <Child v-model="countModel" />
 -
     <!-- Child.vue -->
       <script setup>
-      const model = defineModel()
+      const countModel = defineModel()
 
       function update() {
-        model.value++
+        countModel.value++
       }
       </script>
 

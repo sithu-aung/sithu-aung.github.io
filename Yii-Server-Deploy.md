@@ -61,6 +61,27 @@ or
 
  - sudo a2enmod rewrite
 
+### Enable to connect from Navicat
+
+ - sudo nano /etc/postgresql/16/main/postgresql.conf
+ - delete comment on #listen_address = 'localhost' -> listen_address = '*'
+ - sudo nano /etc/postgresql/16/main/pg_hba.conf
+
+ From 
+       
+       # IPv4 local connections: 
+       host    all             all             127.0.0.1/32            md5
+
+To
+
+       # IPv4 local connections: 
+       host    all             all             127.0.0.1/32            md5 
+       
+  - sudo ufw allow 5432/tcp
+  - sudo service postgresql restart
+
+  - Add Inbound Rule for ( 5432 port in EC2 Dashboard-> Security Tab-> Actions-> Edit Inbound Rules
+
 ### Copy Config from installation
  - https://www.yiiframework.com/doc/guide/2.0/en/start-installation
 

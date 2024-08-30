@@ -44,6 +44,16 @@
     ### Add Junction Table
     - php yii migrate/create create_junction_table_for_post_and_tag_tables --fields="created_at:dateTime"
 
+### hasOne / hasMany / Junction Table
+
+   ### By adding Foreign keys
+   - in migration
+       - hasOne  -> Foriegn Key in one table is unique or primary key in other table ( profile.user_id reference user.id )
+       - hasMany -> If not Unique ( comment.post_id reference post.id )
+    
+   ### Junction ( Many - Many )
+   - create junction Table with foreign keys reference to original tables
+
 ### 5. Import Commands
   - ./yii import/all ( will run ImportController/actionAll)
   - ./yii hello/index ( will run HelloController/actionIndex)

@@ -61,7 +61,94 @@ or
 
  - sudo a2enmod rewrite
 
-### Enable to connect from Navicat
+### Default Server Configs
+   - For Apache2 ( /etc/apache2/sites-available/000-default.conf)
+
+         VirtualHost *:80>
+         # The ServerName directive sets the request scheme, hostname and port that
+         # the server uses to identify itself. This is used when creating
+         # redirection URLs. In the context of virtual hosts, the ServerName
+         # specifies what hostname must appear in the request's Host: header to
+         # match this virtual host. For the default virtual host (this file) this
+         # value is not decisive as it is used as a last resort host regardless.
+         # However, you must set it for any further virtual host explicitly.
+         #ServerName www.example.com
+
+         ServerAdmin webmaster@localhost
+         ServerName 13.55.159.250
+         DocumentRoot /var/www/learnwithus_backend/web
+
+         # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+         # error, crit, alert, emerg.
+         # It is also possible to configure the loglevel for particular
+         # modules, e.g.
+         #LogLevel info ssl:warn
+
+         <Directory /var/www/learnwithus_backend/web>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+         </Directory>
+
+
+          ErrorLog ${APACHE_LOG_DIR}/error.log
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+          # For most configuration files from conf-available/, which are
+          # enabled or disabled at a global level, it is possible to
+          # include a line for only one particular virtual host. For example the
+          # following line enables the CGI configuration for this host only
+          # after it has been globally disabled with "a2disconf".
+          #Include conf-available/serve-cgi-bin.conf
+    </VirtualHost>
+   
+
+   - For Nginx ( ect/nginx/sites-available/000-defaul.conf )
+
+    server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+    #listen [::]:80 default_server ipv6only=on; ## listen for ipv6
+
+    server_name 13.55.159.250;
+    root        /var/www/learnwithus_backend/web;
+    index       index.php;
+
+    access_log  /path/to/basic/log/access.log;
+    error_log   /path/to/basic/log/error.log;
+
+    location / {
+        # Redirect everything that isn't a real file to index.php
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    # uncomment to avoid processing of calls to non-existing static files by Yii
+    #location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+    #    try_files $uri =404;
+    #}
+    #error_page 404 /404.html;
+
+    # deny accessing php files for the /assets directory
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass 127.0.0.1:9000;
+        #fastcgi_pass unix:/var/run/php5-fpm.sock;
+        try_files $uri =404;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+    }
+
+### Enable Remote Access to connect from Navicat
 
  - sudo nano /etc/postgresql/16/main/postgresql.conf
  - delete comment on #listen_address = 'localhost' -> listen_address = '*'
@@ -97,22 +184,21 @@ To
 ### Manual SSL Config
  - sudo nano /etc/apache2/sites-available/000-default.conf
 
-> **_NOTE:_**    
-<VirtualHost *:443>
-    ServerName your-domain.com
-    DocumentRoot /var/www/html
-    SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/your-domain.com/fullchain.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/your-domain.com/privkey.pem
-    <Directory /var/www/html>
-        AllowOverride All
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined</VirtualHost>
-<VirtualHost *:80>
-    ServerName your-domain.com
-    Redirect permanent / https://your-domain.com/
-</VirtualHost>
+       <VirtualHost *:443>
+       ServerName your-domain.com
+       DocumentRoot /var/www/html
+       SSLEngine on
+       SSLCertificateFile /etc/letsencrypt/live/your-domain.com/fullchain.pem
+       SSLCertificateKeyFile /etc/letsencrypt/live/your-domain.com/privkey.pem
+       <Directory /var/www/html>
+          AllowOverride All
+       </Directory>
+       ErrorLog ${APACHE_LOG_DIR}/error.log
+       CustomLog ${APACHE_LOG_DIR}/access.log combined</VirtualHost>
+       <VirtualHost *:80>
+       ServerName your-domain.com
+       Redirect permanent / https://your-domain.com/
+       </VirtualHost>
 
 
 ### Enable SSL

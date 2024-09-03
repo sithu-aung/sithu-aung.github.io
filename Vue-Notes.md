@@ -426,6 +426,27 @@ v-model directive helps to
     }
 
 
+### Vapor Mode
+
+  - VDOM boosts performance but still needs to traverse and compare node properties, creating new VNodes for all tree parts, which can strain memory.
+
+  - To solve this -
+  ### Static Hosting
+  - automatically extracts VNode creation from the render function, allowing for the reuse of VNodes across multiple re-renders. This optimization is effective because these VNodes remain unchanged over time.
+  ### Patch Flags
+  - selectively updates only what has changed based on these flags, without re-rendering entire components or checking every element.
+
+  ### Vapor Mode comes to solve the performance problem.
+
+          import {
+            onBeforeMount,
+            onMounted,
+            onBeforeUnmount,
+            onUnmounted,
+            ref,
+          } from 'vue/vapor'
+
+ - use 'vue/vapor' instead of 'vue'
 
      
 

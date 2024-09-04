@@ -27,24 +27,29 @@
       Copy This
 
          #!/bin/bash
-          # Bare repository directory.
-          GIT_DIR="/var/www/proj"
-          # Target directory.
-          TARGET="/var/www/task-management"
-          while read oldrev newrev ref
-          do
-          BRANCH=$(git rev-parse --symbolic --abbrev-ref $ref)
-          if [[ $BRANCH == "main" ]]; then
-              echo "Push received! Deploying branch: ${BRANCH}..."
-              # deploy to our target directory.
-              git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f $BRANCH
-          else
-              echo "Not main branch. Skipping."
-          fi
-          done
+         while read oldrev newrev ref
+         do
+             if [[ $ref =~ .*/main$ ]];
+             then
+                 echo "Main ref received. Deploying main branch to production..."
+                 if git --work-tree=/var/www/task-management --git-dir=$HOME/proj checkout -f main; then
+                     echo "Deployment successful."
+                 else
+                     echo "Deployment failed. Please check if the 'main' branch exists and has commits."
+                 fi
+             else
+                 echo "Ref $ref successfully received. Doing nothing: only the main branch may be deployed on this server."
+             fi
+         done
 
   - Make Script Executable
 
           chmod +x hooks/post-receive
+
+  - On Client Side
+
+        ssh -i /Users/dev/Desktop/Dev/devssh root@170.64.231.139
+
+    
        
        

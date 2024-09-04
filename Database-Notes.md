@@ -1,6 +1,7 @@
 ### Postgres DB Update
 
-- psql -U your_username -d your_database
+- sudo -i -u postgres
+  psql -d databasename
 - SELECT * FROM "user" WHERE "email" = 'admin@gmail.co';   
 - UPDATE "account"
    SET "level" = 100

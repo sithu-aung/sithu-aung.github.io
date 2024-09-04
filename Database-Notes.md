@@ -45,3 +45,8 @@
    SET "level" = 100
    WHERE "email" = 'admin@gmail.com';
 
+
+  ### DUMP and Restore Database
+
+  pg_dump -U postgres -h localhost -p 5432 -d learningwithus -F c -b -v -f learnwithus.dump
+

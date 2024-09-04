@@ -273,3 +273,6 @@ To
  - sudo yum install -y nginx
  - sudo service nginx start
  - sudo chkconfig nginx on
+
+### Postgres Config
+sudo nano postgresql.conf

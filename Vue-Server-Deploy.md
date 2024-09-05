@@ -7,6 +7,7 @@
 
  // Run in Client Side
  - scp -i /Users/dev/Downloads/social_test.pem -r dist/* ubuntu@13.211.121.212:/var/www/html/
+ - scp -i /Users/dev/Desktop/Dev/devssh -r dist/* root@170.64.231.139:/var/www/html/
 
 ### Server Config for both Frontend and Backend
 sudo a2enmod proxy

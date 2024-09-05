@@ -14,5 +14,22 @@ sudo a2enmod proxy_http
 sudo a2enmod rewrite
 sudo systemctl restart apache2
 
+    <VirtualHost *:80>
+    ServerAdmin webmaster@yourdomain.com
+    ServerName todolist.mooo.com
+    DocumentRoot /var/www/html
+
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/frontend_error.log
+    CustomLog ${APACHE_LOG_DIR}/frontend_access.log combined
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =todolist.mooo.com
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+    </VirtualHost>
+
 # Vite Getting Started
  - npm create vite@latest my-vue-app -- --template vue

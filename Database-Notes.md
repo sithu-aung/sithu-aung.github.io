@@ -50,3 +50,20 @@
 
   pg_dump -U postgres -h localhost -p 5432 -d learningwithus -F c -b -v -f learnwithus.dump
 
+ -  sudo nano /etc/ssh/sshd_config
+ -  Comment Out these two lines
+      PubkeyAuthentication yes
+      AuthorizedKeysFile .ssh/authorized_keys
+
+-    sudo systemctl restart ssh
+-        chmod 700 ~/.ssh
+         chmod 600 ~/.ssh/authorized_keys
+
+- In Local , Generate SSH, copy and insert to it
+
+-    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+
+- scp root@170.64.231.139:~/todolist.dump ~/Desktop
+  
+

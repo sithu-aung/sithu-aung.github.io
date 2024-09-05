@@ -46,9 +46,10 @@
    WHERE "email" = 'admin@gmail.com';
 
 
-  ### DUMP and Restore Database
+  ### Dump and Restore Database
 
-  pg_dump -U postgres -h localhost -p 5432 -d learningwithus -F c -b -v -f learnwithus.dump
+  ### Dump
+  pg_dump -U postgres -h localhost -p 5432 -d todolist -F c -b -v -f todolist.dump
 
  -  sudo nano /etc/ssh/sshd_config
  -  Comment Out these two lines
@@ -65,5 +66,8 @@
 
 
 - scp root@170.64.231.139:~/todolist.dump ~/Desktop
+
+    ### Restore
+    pg_restore -U postgres -h localhost -p 5432 -d todolist -v todolist.dump
   
 

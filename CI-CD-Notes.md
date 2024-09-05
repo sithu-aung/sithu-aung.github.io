@@ -48,9 +48,15 @@
 
   - On Client Side
 
-        ssh -i /Users/dev/Desktop/Dev/devssh root@170.64.231.139
+  -      ssh -i /Users/dev/Desktop/Dev/devssh root@170.64.231.139
 
-        git remote add production root@170.64.231.139:proj
+  -     git remote add production root@170.64.231.139:proj
+
+  - In case of SSH config
+
+         chmod 600 /Users/dev/Desktop/Dev/devssh
+           eval "$(ssh-agent -s)"
+           ssh-add /Users/dev/Desktop/Dev/devssh
 
     
        

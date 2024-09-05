@@ -32,5 +32,20 @@ sudo systemctl restart apache2
     RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
     </VirtualHost>
 
+### For 404 Route Fixes
+
+      <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteBase /
+      RewriteRule ^index\.html$ - [L]
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule . /index.html [L]
+      </IfModule>
+
+     <IfModule mod_headers.c>
+     Header set Permissions-Policy "interest-cohort=()"
+     </IfModule>
+     
 # Vite Getting Started
  - npm create vite@latest my-vue-app -- --template vue

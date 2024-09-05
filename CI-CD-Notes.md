@@ -50,6 +50,8 @@
 
         ssh -i /Users/dev/Desktop/Dev/devssh root@170.64.231.139
 
+        git remote add production root@170.64.231.139:proj
+
     
        
        

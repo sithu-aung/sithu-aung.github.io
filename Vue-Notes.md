@@ -2,6 +2,12 @@
 
 ### Vue - Progressive Javascript Framework for building UI
 
+### Core Modules of Vue
+
+  1. Reactivity Module
+  2. Compiler Module
+  3. Renderer Module
+
 ### Core Features of Vue
   1. Declarative Rendering - using of import
   2. Reactivity  - usage of ref()

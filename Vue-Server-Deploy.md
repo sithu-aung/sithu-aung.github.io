@@ -51,3 +51,6 @@ sudo systemctl restart apache2
      
 # Vite Getting Started
  - npm create vite@latest my-vue-app -- --template vue
+
+# Dist Push to server
+ -scp -i /Users/dev/Desktop/Dev/devssh -r dist/* root@170.64.231.139:/var/www/html/

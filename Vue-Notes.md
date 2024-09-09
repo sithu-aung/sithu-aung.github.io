@@ -454,5 +454,28 @@ v-model directive helps to
 
  - use 'vue/vapor' instead of 'vue'
 
-     
+
+# Composables
+
+  ### The Async without Await Pattern
+
+   Previous 
+
+         const count = ref(0);
+         const { state } useAsyncState(fetchData());
+         const doubleCount = computed(()=>{
+            count * 2;
+         });
+
+      export default useAsyncState(promise){
+       const state = ref(null);
+
+       const execute = async() {
+         state.value = await promise;
+       }
+
+       execute();
+
+       return state;
+      }
 

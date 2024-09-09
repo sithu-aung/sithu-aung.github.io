@@ -23,6 +23,10 @@
   - createuser --interactive --pwprompt ( optional)
   - CREATE DATABASE new_database_name;
 
+ Or 
+  - CREATE DATABASE new_database_name;
+  - psql -d new_database_name
+
  ### 4. Table Migration 
   - php yii migrate (/fresh if data reset)
 

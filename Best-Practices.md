@@ -1,8 +1,12 @@
+# Best Practices
+
 # SOLID Principles
 
   - Introduced by Robert Martin ( Uncle Bob in 2000 )
 
  ### Single Responsibility
+
+  - “There should never be more than one reason for a class to change”. Each class should have only one central responsibility.
 
   - Class ( including method in a class ) should only do one thing.
 
@@ -11,6 +15,7 @@
 
 ### Open/Closed  
 
+   - “Software entities…” should be open for extension, but closed for modification.
    - a Module should be Open for extension, but Closed for modification'
    - Extend Module with new features not by changing its source code, but by adding new code instead
 
@@ -20,6 +25,7 @@
 
 ### Liskov Substitution
 
+  -  Function that uses pointers, reference of base classs, must be able to use object of derived classes without knowing it.
   -  Barbara Liskov - late 80s
   -  Should be able to substitute a parent class with any of its child classes, without breaking the system.
   -  Implementations of the same interface should never give a different result.
@@ -31,12 +37,14 @@
 
 ### Interface Segregation 
 
+   - Clients should not be forced to depend upon interfaces that they do not use.
    - Never force the client to depend on methods it doesn't use
 
      Example : Split the Employee class into smaller classes with specific interfaces.
 
 ### Dependency Inversion
 
+   - Depend upon abstractions, [not] concretions.
    - High Level Modules should not depend on low-level Modules - both should depend on Abstractions
 
      Example : Like a socket in a house , plug in all devices and no need to care how electricity is provided.

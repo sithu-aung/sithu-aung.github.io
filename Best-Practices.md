@@ -50,3 +50,10 @@
      Example : Like a socket in a house , plug in all devices and no need to care how electricity is provided.
 
      Solved by using Dependency Injection - no need to depend on concrete classes.
+
+# Useful Coding Laws
+### DRY ( Don't Repeat Yourself )
+### use enum for fixed sets of Constants
+### Avoid not complete abbreviations ( cal() -> calculate() )
+### Use Key Widgets for Efficient Updates
+### Avoid Nested Try Blocks

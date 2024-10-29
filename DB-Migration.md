@@ -21,25 +21,25 @@ Database migrations are a crucial part of managing changes to your database sche
 ## Migration Process
 
 1. **Create Migration**:
-   - Use a command-line tool provided by your framework (e.g., `php artisan make:migration` in Laravel) to create a new migration file. This file will contain the `up` and `down` methods.
+   - Use the Yii 2 command-line tool to create a new migration file. Run `yii migrate/create <name>` to generate a new migration file. This file will contain the `up` and `down` methods.
 
 2. **Edit Migration**:
    - Define the schema changes in the `up` method and the rollback logic in the `down` method.
 
 3. **Run Migration**:
-   - Apply the migrations using a command (e.g., `php artisan migrate`). This will execute the `up` methods of all pending migrations.
+   - Apply the migrations using the command `yii migrate`. This will execute the `up` methods of all pending migrations.
 
 4. **Rollback Migration**:
-   - If needed, you can rollback the last batch of migrations using a command (e.g., `php artisan migrate:rollback`). This will execute the `down` methods.
+   - If needed, you can rollback the last batch of migrations using the command `yii migrate/down`. This will execute the `down` methods.
 
 5. **Reset Migration**:
-   - This command (e.g., `php artisan migrate:reset`) rolls back all migrations, effectively undoing all schema changes.
+   - This command is not directly available in Yii 2, but you can manually rollback all migrations using `yii migrate/down` with a specified step count or by resetting the database and reapplying migrations.
 
 6. **Refresh Migration**:
-   - This command (e.g., `php artisan migrate:refresh`) rolls back all migrations and then re-runs them. It's useful for testing the entire migration process.
+   - Similar to reset, you can manually rollback and reapply migrations by using `yii migrate/down` followed by `yii migrate`.
 
 7. **Fresh Migration**:
-   - This command (e.g., `php artisan migrate:fresh`) drops all tables and re-runs all migrations. It's a clean slate approach, often used in development.
+   - This is not a direct command in Yii 2, but you can achieve a similar effect by manually dropping all tables and running `yii migrate` to reapply all migrations.
 
 ## Best Practices
 
@@ -47,7 +47,7 @@ Database migrations are a crucial part of managing changes to your database sche
    - Always keep your migration files under version control. This ensures that your database schema changes are tracked alongside your application code.
 
 2. **Descriptive Names**:
-   - Use descriptive names for your migration files to easily understand what changes they introduce (e.g., `add_user_email_to_users_table`).
+   - Use descriptive names for your migration files to easily understand what changes they introduce (e.g., `m210101_123456_add_user_email_to_users_table`).
 
 3. **Test Migrations**:
    - Test your migrations in a development environment before applying them to production. This helps catch any issues early.

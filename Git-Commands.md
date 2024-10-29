@@ -4,17 +4,17 @@ https://www.youtube.com/watch?v=aolI_Rz0ZqY&t=581s
 
 ### Porcelain (82)
 
-44 main commands ( add , commit , push , pull , … )
-11 manipulators        ( config, reflag, replace, ... )
-17 interrogators        ( blame, fsck, rerere, … )
-10 interactions          ( send-email, p4, svn, … )
+44 main commands  ( add , commit , push , pull , … )
+11 manipulators   ( config, reflag, replace, ... )
+17 interrogators  ( blame, fsck, rerere, … )
+10 interactions   ( send-email, p4, svn, … )
 
 ### Plumbing(63)
 
-19 manipulators (apply, commit-tree, update-ref, …)
-21 interrogators  (cat-file, for-each-ref, … )
-5   syncing           (fetch-pack, send-pack, … )
-18 internal            (check-after, sh-i18n, … )
+19 manipulators     (apply, commit-tree, update-ref, …)
+21 interrogators    (cat-file, for-each-ref, … )
+5  syncing          (fetch-pack, send-pack, … )
+18 internal         (check-after, sh-i18n, … )
 
 ### Total - 145
 
@@ -31,5 +31,12 @@ git branch | head -5
 git config --global column.ui auto
 git config --global branch.sort -commiterdate
 git branch
+
+git push --force-with-lease ( force push with first conflict check )
+
+git config gpg.format ssh
+git config user.signkey ~/.ssh/key.pub
+git commit -s
+
 
 

@@ -1,15 +1,15 @@
-#Git Commands
+# Git Commands
 
 https://www.youtube.com/watch?v=aolI_Rz0ZqY&t=581s
 
-###Porcelain (82)
+### Porcelain (82)
 
 44 main commands ( add , commit , push , pull , … )
 11 manipulators        ( config, reflag, replace, ... )
 17 interrogators        ( blame, fsck, rerere, … )
 10 interactions          ( send-email, p4, svn, … )
 
-###Plumbing(63)
+### Plumbing(63)
 
 19 manipulators (apply, commit-tree, update-ref, …)
 21 interrogators  (cat-file, for-each-ref, … )
@@ -23,7 +23,13 @@ https://www.youtube.com/watch?v=aolI_Rz0ZqY&t=581s
 git blame -w -C -C -C
 git log -S 
 git reflog
-git config —global rerere.enabled true ( Reuse Recorded Resolution )
+git config --global rerere.enabled true ( Reuse Recorded Resolution )
 
-### New staff
+### New stuff
+
+git branch | head -5
+git config --global column.ui auto
+git config --global branch.sort -commiterdate
+git branch
+
 

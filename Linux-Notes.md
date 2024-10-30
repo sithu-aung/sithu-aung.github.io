@@ -1,5 +1,5 @@
 ##########################
-##### Keyboard Shortcuts
+### Keyboard Shortcuts
 ##########################
 TAB  ### autocompletes the command or the filename if its unique
 TAB TAB (press twice)   ### displays all commands or filenames that start with those letters
@@ -7,10 +7,10 @@ TAB TAB (press twice)   ### displays all commands or filenames that start with t
 ### clearing the terminal
 CTRL + L
  
-##### closing the shell (exit)
+#### closing the shell (exit)
 CTRL + D
  
-##### cutting (removing) the current line 
+#### cutting (removing) the current line 
 CTRL + U
  
 ### moving the cursor to the start of the line
@@ -29,7 +29,7 @@ CTRL + Z
 CTRL + ALT + T
 
 ##########################
-#### Bash History
+### Bash History
 ##########################
  
 ### showing the history
@@ -74,7 +74,7 @@ echo "HISTTIMEFORMAT=\"%d/%m/%y %T\"" >> ~/.bashrc
 echo 'HISTTIMEFORMAT="%d/%m/%y %T"' >> ~/.bashrc
 
 ##########################
-#### Running commands as root (sudo, su)
+### Running commands as root (sudo, su)
 ##########################
  
 ### running a command as root (only users that belong to sudo group [Ubuntu] or wheel [CentOS])
@@ -98,7 +98,7 @@ Each group of data = File , logic used to manage files is File Systems
 Everything is file , if not file - it is process
 
 ##########################
-#### Linux Paths
+### Linux Paths
 ##########################
  
 .       ### => the current working directory
@@ -120,9 +120,9 @@ tree -f .           ### => prints absolute paths
 
 ##########################
 
-#### The ls Command
+### The ls Command
 
-#### ls [OPTIONS] [FILES]
+### ls [OPTIONS] [FILES]
 
 ##########################
 
@@ -213,7 +213,7 @@ ls -lR ~
 ls -li /etc
 
 ##########################
-#### File Timestamps and Date
+### File Timestamps and Date
 ##########################
  
 ### displaying atime
@@ -281,7 +281,7 @@ ls -ltu
 ls -ltu --reverse
 
 ##########################
-#### Viewing files (cat, less, more, head, tail, watch)
+### Viewing files (cat, less, more, head, tail, watch)
 ##########################
  
 ### displaying the contents of a file
@@ -332,7 +332,7 @@ head -n 15 filename
 watch -n 3 ls -l
 
 ##########################
-#### Working with files and directory (touch, mkdir, cp, mv, rm, shred)
+### Working with files and directory (touch, mkdir, cp, mv, rm, shred)
 ##########################
  
 ### creating a new file or updating the timestamps if the file already exists
@@ -345,7 +345,7 @@ mkdir dir1
 mkdir -p mydir1/mydir2/mydir3
  
 ######################
-##### The cp command ###
+#### The cp command ###
 ######################
 ### copying file1 to file2 in the current directory
 cp file1 file2
@@ -370,7 +370,7 @@ cp -r file1 file2 dir1 dir2 destination_directory/
  
  
 ######################
-##### The mv command ###
+#### The mv command ###
 ######################
 ### renaming file1 to file2
 mv file1 file2
@@ -394,7 +394,7 @@ mv file1 dir1/file2
 mv file1 file2 dir1/ dir2/ destination_directory/
  
 ######################
-##### The rm command ###
+#### The rm command ###
 ######################
 ### removing a file
 rm file1
@@ -415,16 +415,16 @@ rm -ri fil1 dir1/
 shred -vu -n 100 file1
 
 ##########################
-#### Piping and Command Redirection
+### Piping and Command Redirection
 ##########################
  
-#### Piping Examples:
+### Piping Examples:
  
 ls -lSh /etc/ | head            ### see the first 10 files by size
 ps -ef | grep sshd              ### checking if sshd is running
 ps aux --sort=-%mem | head -n 3  ### showing the first 3 process by memory consumption
  
-#### Command Redirection
+### Command Redirection
  
 ### output redirection
 ps aux > running_processes.txt
@@ -443,10 +443,10 @@ cat -n /var/log/auth.log | grep -ai "authentication failure" | wc -l
 cat -n /var/log/auth.log | grep -ai "authentication failure" > auth.txt     ### => piping and redirection
 
 ##########################
-#### Finding Files (find, plocate)
+### Finding Files (find, plocate)
 ##########################
  
-#### LOCATE ##
+### LOCATE ##
 ### locate is a symlink (shortcut) to plocate
  
 ### updating the plocate db
@@ -471,12 +471,12 @@ which command
 which -a command
  
  
-#### FIND ##
+### FIND ##
 find PATH OPTIONS
  
 ### Example: find ~ -type f -size +1M ### => finding all files in ~ bigger than 1 MB
  
-#### Options:
+### Options:
 ### -type f, d, l, s, p
 ### -name filename
 ### -iname filename ### => case-insensitive
@@ -488,7 +488,7 @@ find PATH OPTIONS
 ### -group group_owner
 
 ##########################
-#### VIM
+### VIM
 ##########################
  
 Modes of operation: Command, Insert, and Last Line Modes.

@@ -1436,3 +1436,39 @@ All scripts in following directories will run as root at that interval:
 /etc/cron.monthly
 /etc/cron.weekly
 
+podman pod create --name my-pod wordpress-pod -p 8080:80
+
+
+//For podman monitoring
+podman pod ps
+
+//See podman containers
+podman ps
+
+//See podman images
+podman stats -h --format json -i 3 --no-stream 
+
+//See podman volumes
+podman volume ls
+
+//See podman logs
+podman logs -f wordpress-pod --tail 10
+
+//See podman events
+podman events --format json
+
+//stop podman pod
+podman pod stop wordpress-pod
+
+//delete podman pod
+podman pod rm wordpress-pod -f
+
+Data is not removed when podman is stopped or removed.
+
+//See podman volumes
+podman volume create mariadb_data
+
+podman volume rm mariadb_data -f
+
+
+

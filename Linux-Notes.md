@@ -1744,3 +1744,371 @@ fi
 ### &&  => the logical and operator
 ### ||  => the logical or operator
 
+podman pod create --name my-pod wordpress-pod -p 8080:80
+
+//For podman monitoring
+podman pod ps
+
+//See podman containers
+podman ps
+
+//See podman images
+podman stats -h --format json -i 3 --no-stream 
+
+//See podman volumes
+podman volume ls
+
+//See podman logs
+podman logs -f wordpress-pod --tail 10
+
+//See podman events
+podman events --format json
+
+//stop podman pod
+podman pod stop wordpress-pod
+
+//delete podman pod
+podman pod rm wordpress-pod -f
+
+Data is not removed when podman is stopped or removed.
+
+//See podman volumes
+podman volume create mariadb_data
+
+podman volume rm mariadb_data -f
+
+#Crontab
+
+crontab -e
+
+
+m h dom mon dow 
+* * * * * command_to_execute
+- - - - -
+| | | | |
+| | | | +---- Day of the week (0 - 6) (Sunday = 0 , Sat = 6)
+| | | +------ Month (1 - 12)
+| | +-------- Day of the month (1 - 31)
+| +---------- Hour (0 - 23)
++------------ Minute (0 - 59)
+
+0 6 * * * /root/backup.sh //
+* * * * * /root/check_space.sh
+0 4,6,10 * * * /root/check_space.sh
+0 9-17 * * 1-5 /root/firewall.sh
+4,21 */3 * * /root/task.sh
+@yearly /root/happy_new_year  - 0 0 1 1 *
+@monthly                      - 0 0 1 * *
+@daily                        - 0 0 * * *
+@hourly                       - 0 * * * *
+@reboot - run at boot time
+15 2 * * 1L	    At 2:15am on the last monday of every month
+15 0 * * 4#2	At 00:15am on the second thursday of every month
+
+
+*/2 * * * - every 2 hours
+
+Asterik(*)	Matches all values in the field or any possible value.
+Hyphen(-)	Used to define a range.Ex: 1-5 in 5th field(Day Of Week) Every Weekday i.e., Monday to Friday
+Slash (/)	1st field(Minute) /15 meaning every fifteen minute or increment of range.
+Comma (,)	Used to separate items.Ex: 2,6,8 in 2nd fields(Hour) executes at 2am,6am and 8am
+L	It is allowed only for Day of Month or Day Of Week field, 2L in Day of week indicates Last tuesday of every month
+Hash (#)	It is allowed only for Day Of Week field, which must be followed within range of 1 to 5. For example, 4#1 means "The first Thursday" of given month.
+Question mark (?)	Can be instead of '*' and allowed for Day of Month and Day Of Week. Usage is restricted to either Day of Month or Day Of Week in a cron expression.
+
+/var/log/syslog
+
+crontab -r
+crontab -u 
+crontab -e -u username
+
+
+Cron for server and Anacron for user laptops and desktop
+
+#Mounting 
+
+mount -l -t ext4
+
+systemctl enable|start|stop|restart|reload
+
+
+#SSH Key Generate in Client
+ssh-keygen -t rsa -b 2048 -C 
+
+#Upload Public key to Server
+Security -> add SSH public key
+
+ssh-copy-id ubuntu@ip-172-31-2-245
+
+#DNS Config
+dig -t a ubuntu.com
+
+#Virtual Hosting
+ufw status
+ufw allow 'Apache Full'
+
+a2ensite your_site
+
+
+#cert bor
+
+install certbot python3-certbot-apache
+certbot -d domaian_name
+
+----------------------------------------------
+
+Bash Shell Scripting
+
+alias
+
+alias c="clear"
+
+nmap -sS -p 22,100 -sV 192.168.0.1
+
+nmap , arp_scan , netdiscover
+
+wireshark , tcpdump
+
+#Comman Substitution
+
+now=`date` or now="`date`" or now="$(date)"
+
+//Denial of Service Attact script
+
+$0 && $0 &
+
+To protect
+
+ulimit -u
+
+sudo vim /etc/security/limits.conf
+
+- user hard nproc 2000 
+
+#IPFS - Interplanetary File System
+
+protocol to make permanent and decentralized method for storing and sharing files
+replace http and build a better web
+
+ipfs init
+ipfs id
+ipfs start daemon
+sudo ipfs swarm peers
+sudo ipfs cat /ipfs/some_hash > ~/Desktop/spaceship.jpg
+
+sudo ipfs add -r directory_name
+
+ipfs.io/ipfs/hash_key_generated
+localhost:8080/ipfs/hash_key_generated
+sudo ipfs ls hash_key_generated
+
+sudo ipfs pin ls --type=all
+sudo ipfs pin rm hash_key_generated (not garbage collected)
+sudo ipfs cat hash_key_generated
+sudo ipfs repo gc
+
+#NETFILTER
+
+every packet is filtered by firewall -> iptables -> rulese-> rules are organized to chains
+match rule found for packet -> target executed ( target == action triggered)
+
+#NETFILTER CHAINS
+
+INPUT - filtering incoming packets
+OUTPUT - filtering outgoing packets
+FORWARD - filtering routed packets
+PREROUTING - 
+POSTROUTING - 
+
+#NETFILTER TABLES
+
+1. filter ( default ) - INPUT/OUTPUT/FORWARD
+
+iptables -A INPUT -p tcp --dport 22 -s 5.3.6.6. -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -j DROP
+
+2. nat (SNAT and DNAT - Port Forwading)
+3. mangle ( packet alteration)
+4. raw ( RPEROUTING and OUTPUT)
+
+Chain Traversal in a nutshell
+
+Incoming Traffic - INPUT chain of filter table 
+Outgoing Traffic - OUTPUT chain of filter table 
+Routed Traffic - FORWARD chain of filter table 
+SNAT/MASQUERADE - POSTROUTING chain of nat table
+DNAT/Post Forwarding - PREROUTING chain of nat table
+To modify values from packet's header - add rules to mangle table
+To skip connection tracking           - add rules with NOTRACK target to raw table 
+
+#IPTABLE COMMAND (only by root)
+
+iptables [-t TABLE] -COMMAND CHAIN_NAME matches -j TARGET
+
+TABLE      COMMANDS           CHAIN            matches                      Target/Jump
+
+filter      -A (append)        INPUT            -s source_ip                 ACCEPT
+nat        -I (insert)        OUTPUT           -d destination_ip            DROP
+mangle     -D (delete)        FORWARD          -p protocol                  REJECT
+raw        -R (replace)       PREROUTING       --sport source_port          LOG
+           -F (flush)          POSTROUTING      --dport destination_port     SNAT
+           -Z (zero)          USER_DEFINED     -i incoming_int              DNAT
+           -L (list) -vnL                      -o outgoing_int              MASQUERADE
+           -S (show)                           -m mac                       LIMIT
+           -N (create)                         -m time                      RETURN
+           -X (Delete)                         -m quota                     TEE
+           -P (set Policy)                     -m limit                     TOS
+                                               -m recent                    TTL
+
+
+iptables -t filter -A OUTPUT -p tcp --dport 80 -d www.ubuntu.com -j DROP
+iptables -L -vn
+
+#check port open
+nmap -p 25 ip_address
+
+iptables -A INPUT -p tcp --dport 25 -j DROP
+
+WRITE RULES for IPTABLES
+
+#Script File - firewall.sh
+-----------------------------------
+#!/bin/bash
+
+#flush all rules
+iptables -F
+
+#flush nat table rules
+iptables -t nat -F
+
+#drop incoming ssh traffic
+iptables -A INPUT -p tcp -dport 22 -j DROP
+
+#drop outgoing http and htttps traffic
+iptables -A OUTPUT -p tcp --dport 80 -j DROP
+iptables -A OUTPUT -p tcp --dport 443 -j DROP
+
+iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -o enp0s3 -j SNAT --to-source 80.0.0.1
+-----------------------------------
+
+chmod 700 firewall.sh
+./firewall.sh
+
+#Default Policy - INPUT,OUTPUT and FORWARD chains only
+
+Default policy is accept all trafic
+
+can be changed with -P option.
+
+iptables -P INPUT -j DROP
+
+#Script File - delete_firewall.sh
+-----------------------------------
+#!/bin/bash
+
+#1. set the ACCEPT policy
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+
+#2. flush all table rules
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -t raw -F
+
+#3. delete user defined chains
+iptables -X
+-----------------------------------
+
+filter by port
+
+#single_port
+iptables -A INPUT -p tcp --dport 22 -j DROP
+
+#multiple_ports
+iptables -A INPUT -p tcp -m multiports --dports 80,443 -j ACCEPT
+
+nmap your_ip_address
+
+#Connection Tracking = Statefull Firewall
+
+ability to maintain state information about connections
+
+Package State - NEW | ESTABLISHED | RELATED | INVALID | UNTRACKED
+
+UDP or ICMP == stateless
+
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT 
+
+#Script File - statefull_firewall.sh
+-----------------------------------
+#!/bin/bash
+
+iptables -F
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -i lo -j ACCEPT
+
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -s 192.168.0.20 -j ACCEPT
+
+iptables -A INPUT -m state --state INVALID -j DROP
+iptables -A OUTPUT -m state --state INVALID -j DROP
+
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+-----------------------------------
+
+Filter with MAC address
+
+iptables -A INPUT -i wlan0 -m mac --mac-source macaddress 
+
+#Script File - permitted_mac_address.sh
+-----------------------------------
+#!/bin/bash
+
+iptables -F FORWARD
+
+PERMITTED_MACS = "00:00 00:00 88:00"
+
+for MAC in $PERMITTED_MACS
+do
+    iptables -A FORWARD -m mac --mac-source $MAC -j ACCEPT
+    echo "$MAC is permitted"
+done
+
+iptables -A FORWARD DROP
+-----------------------------------
+
+FIlter by Date Time
+m time --datestart | datestop | timestart | timestop | monthdays | kerneltz ( kernel timezone instead of utc)
+
+#Script File - permitted_time.sh
+-----------------------------------
+#!/bin/bash
+
+iptables -F 
+
+iptables -A INPUT -p tcp --dport 22 -m time --timestart 10:00 --timeend 04:00 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 DROP
+
+ACCEPT/DROP are terminating targets
+LOG is not terminating target - log detail info about packet headers
+
+iptables -A INPUT -p tcp --dport 22 -sync -j LOG --log-prefix="incoming ssh: " \ --log-level info
+tail -f /var/log/kern.log
+
+
+#SSH Public Key Authentication (PKA)
+
+Advantages
+-more secure
+-auth from script
+
+Private Key - on SSH Client
+Public Key - on SSH Server
+
+ssh-keygen -b 2048 -t rsa -C "Comment on Key"

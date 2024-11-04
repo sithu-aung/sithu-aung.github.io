@@ -34,6 +34,9 @@ or
  - sudo chown -R www-data:www-data /var/www/social-test
  - sudo chmod -R 755 /var/www/social-test
 
+   sudo chown -R www-data:www-data /var/www/loman_backend/web
+   sudo chmod -R 755 /var/www/loman_backend/web
+
 
 ### Manually create the vendor directory
  - mkdir -p /var/www/social-test/vendor

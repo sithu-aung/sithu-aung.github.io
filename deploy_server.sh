@@ -35,7 +35,8 @@ sudo -u postgres psql -c "CREATE DATABASE $DB_NAME;"
 
 # Clone the project repository
 echo "Cloning the project repository..."
-sudo git clone $REPO_URL $PROJECT_PATH
+cd /var/www
+sudo git clone $REPO_URL
 
 # Set proper ownership and permissions
 echo "Setting proper ownership and permissions..."
@@ -45,13 +46,11 @@ sudo chown -R www-data:www-data $PROJECT_PATH
 sudo chmod -R 755 $PROJECT_PATH
 sudo chmod 777 $PROJECT_PATH/runtime/ $PROJECT_PATH/web/assets/
 
-# Create vendor directory
-echo "Creating vendor directory..."
-mkdir -p $PROJECT_PATH/vendor
-
-# Run Composer install
-echo "Running Composer install..."
-cd $PROJECT_PATH && composer install
+echo "Installing dependencies..."
+cd $PROJECT_PATH
+sudo mkdir -p vendor
+sudo chown -R $USER:$USER vendor
+composer install --no-interaction
 
 # Configure Apache
 echo "Configuring Apache..."

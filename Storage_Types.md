@@ -19,23 +19,25 @@ IBM - 1983 - PC DOS version 2.0
 
 ### APM (Apple Partition Map)
 - Used by older Apple systems
-- Limited to 32 partitions
+- Limited to 32 bits worth of logical blocks - 2TB
 - Mainly obsolete now
 
-### MBR (Master Boot Record)
+### MBR (Master Boot Record) - IBM - 1983
 - Traditional partition table
 - Max 2TB disk size
 - 4 primary partitions only
 - Legacy BIOS systems
 - The MBR consists of 512 or more bytes located in the first sector of the drive.
 
-### GPT (GUID Partition Table)
+### GPT (GUID Partition Table) - Intel - 1990 
 GUID - Globally Unique IDentifier)
 - Modern standard
 - Supports >2TB disks
 - Up to 128 partitions
 - Part of UEFI - Unified extensible firmware interface
 - Has backup partition table
+- Macs and Windows allowed to boot from EFI Firmware,
+- Linux allows both bios and EFI firmware
 
 ### LVM (Logical Volume Management)
 - Dynamic volume management
@@ -43,6 +45,8 @@ GUID - Globally Unique IDentifier)
 - Supports snapshots
 - Can span multiple disks
 
+#Files System
+- Standards of organizg data on disk storage and applied to format disks
 ## Microsoft Filesystems
 
 ### FAT (File Allocation Table)
@@ -50,6 +54,8 @@ GUID - Globally Unique IDentifier)
 - Max file size: 2GB
 - No permissions
 - Used in old systems
+- Replaced with NTFS in Windows XP
+- commonly used for small-capacity solid-state storage SD cards 
 
 ### FAT32
 - Max file size: 4GB
@@ -65,7 +71,7 @@ GUID - Globally Unique IDentifier)
 - Good for external drives
 - Cross-platform compatible
 
-### NTFS
+### NTFS (New Technology File System)
 - Windows native filesystem
 - Permissions support
 - Journaling
@@ -75,10 +81,11 @@ GUID - Globally Unique IDentifier)
 ## Apple Filesystems
 
 ### APFS (Apple File System)
-- Modern Apple filesystem
+- Modern Apple filesystem - uses GPT
 - SSD optimized
 - Snapshots
 - Encryption
+- supporting over 9 quintillion files (263) on a single volume.
 - Used in macOS/iOS
 
 Features:
@@ -108,7 +115,7 @@ Features:
 - Better performance
 - Extents support
 
-### ZFS
+### ZFS (Zetabyte File System)
 - Advanced filesystem
 - Built-in RAID
 - Snapshots

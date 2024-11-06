@@ -39,12 +39,6 @@ GUID - Globally Unique IDentifier)
 - Macs and Windows allowed to boot from EFI Firmware,
 - Linux allows both bios and EFI firmware
 
-### LVM (Logical Volume Management)
-- Dynamic volume management
-- Can resize partitions easily
-- Supports snapshots
-- Can span multiple disks
-
 #Files System
 - Standards of organizg data on disk storage and applied to format disks
 ## Microsoft Filesystems
@@ -115,12 +109,24 @@ Features:
 - Better performance
 - Extents support
 
-### ZFS (Zetabyte File System)
+----------------------------------
+# Storage Management Solution
+
+### LVM (Logical Volume Management) - Volume Manager
+- Dynamic volume management
+- Can resize partitions easily
+- Supports snapshots
+- Can span multiple disks
+
+### ZFS (Zetabyte File System) - File System + Volume Manager
 - Advanced filesystem
-- Built-in RAID
+- Built-in RAID (Redundant array of independent disks)
 - Snapshots
 - Data integrity
 - Volume management
+
+### LVM VS ZFS
+Snapshot - LVM is slower than ZFS that us copy-on-write(CoW) approach
 
 ## Feature Comparison
 

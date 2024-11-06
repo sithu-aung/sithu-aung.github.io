@@ -1,9 +1,14 @@
 
 # Server Setup Guide
 
+
 ### Yii Project Server Setup
 
+ ### SSH 
+ 
  - ssh -i your_key.pem ubuntu@public_ip
+
+ - 
  - sudo apt update
  - sudo apt install apache2 || ngnix
  - sudo apt install git

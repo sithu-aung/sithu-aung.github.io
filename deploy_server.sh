@@ -69,6 +69,10 @@ sudo bash -c "cat > /etc/apache2/sites-available/000-default.conf <<EOF
 </VirtualHost>
 EOF"
 
+# Open 80 port in firewall
+sudo ufw allow 80/tcp
+sudo ufw allow 'Apache Full'
+
 # Enable Apache rewrite module
 echo "Enabling Apache rewrite module..."
 sudo a2enmod rewrite

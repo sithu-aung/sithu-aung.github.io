@@ -27,6 +27,7 @@ IBM - 1983 - PC DOS version 2.0
 - Max 2TB disk size
 - 4 primary partitions only
 - Legacy BIOS systems
+- The MBR consists of 512 or more bytes located in the first sector of the drive.
 
 ### GPT (GUID Partition Table)
 GUID - Globally Unique IDentifier)

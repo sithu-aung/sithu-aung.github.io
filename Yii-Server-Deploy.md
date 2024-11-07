@@ -183,6 +183,9 @@ To
  - https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu
 
 ————————————————————
+### Free Domain Name
+https://freedns.afraid.org/subdomain/
+
 ### Certbot 
 
  - sudo apt update

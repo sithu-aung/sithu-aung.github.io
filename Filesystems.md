@@ -135,9 +135,13 @@ Features:
 - Supports snapshots
 - Can span multiple disks
 
+### Layers
+- PV - physical volume -> VG - volume group -> LV - logical volume -> File System
+
 ### ZFS (Zetabyte File System) - File System + Volume Manager
 - Advanced filesystem
 - Built-in RAID (Redundant array of independent disks)
+- RAID == a technology used to store data across multiple hard drives in a way that provides fault tolerance and/or increased performance.
 - Snapshots
 - Data integrity
 - Volume management

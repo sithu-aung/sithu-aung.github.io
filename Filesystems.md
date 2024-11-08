@@ -43,7 +43,15 @@ GUID - Globally Unique IDentifier)
 - Standards of organizg data on disk storage and applied to format disks
 ## Microsoft Filesystems
 
-### FAT (File Allocation Table)
+### FAT (File Allocation Table
+
+            Max File Size                     Max Volume Size 
+FAT 12       32MB/16MB (8KB/4KB Cluster)      32MB (8KB Cluster)
+FAT 16       2GB/4GB                          16GB
+FAT 32       4GB                              32GB (Window Format)
+                                              2TB (other OS)
+                                              16TB (theorectical)
+
 - Very basic filesystem
 - Max file size: 2GB
 - No permissions
@@ -51,36 +59,38 @@ GUID - Globally Unique IDentifier)
 - Replaced with NTFS in Windows XP
 - commonly used for small-capacity solid-state storage SD cards 
 
-### FAT32
-- Max file size: 4GB
-- Max volume: 2TB
-- No permissions
-- Used for USB/EFI
-- Wide compatibility
-
 ### exFAT
+- Max file size: 16EB (1EB - 1 million TB)
 - Large file support
 - No size limits
 - No permissions
 - Good for external drives
-- Cross-platform compatible
+- Cross-platform compatible (support MacOS and other Linux distros)
 
 ### NTFS (New Technology File System)
+- Max file size: 16EB (1EB - 1 million TB)
 - Windows native filesystem
-- Permissions support
+- Support Permissions and Encryption
 - Journaling
 - File compression
-- Max file size: 16EB
+- Limited on non-window OS - read only on MacOS and older Linux distros
 
 ## Apple Filesystems
 
-### APFS (Apple File System)
+### HFS (Hierarchical file system)
+
+### HFS+ - 1998
+- Add Journaling to HFS
+- Max VOlume 8EB
+
+### APFS (Apple File System) - 2017
 - Modern Apple filesystem - uses GPT
 - SSD optimized
 - Snapshots
 - Encryption
 - supporting over 9 quintillion files (263) on a single volume.
 - Used in macOS/iOS
+- No Native support for Window and Linux distro
 
 Features:
 - Space sharing
@@ -90,24 +100,31 @@ Features:
 
 ## Linux Filesystems
 
-### ext2
+### ext1(extended file system)  - 1992
+
+### ext2 - 1993
 - Basic Linux filesystem
 - No journaling
 - Simple structure
 - Still used for flash drives
 
-### ext3
+### ext3 - 2001
 - Added journaling to ext2
 - Max file size: 2TB
 - Max volume: 32TB
 - Backward compatible
 
-### ext4
+### ext4 - 2008
 - Current Linux standard
 - Max file size: 16TB
 - Max volume: 1EB
 - Better performance
 - Extents support
+- No Native support for MacOS and Window
+
+## Sun Microsystems
+
+## ZFS (see under next section)
 
 ----------------------------------
 # Storage Management Solution
@@ -149,8 +166,8 @@ Snapshot - LVM is slower than ZFS that us copy-on-write(CoW) approach
 ## Common Use Cases
 
 ### USB Drives
-- FAT32 (compatibility)
-- exFAT (large files)
+- FAT32 (compatibility) under 32GB storage
+- exFAT (large files or over 32GB storage)
 
 ### System Drives
 - NTFS (Windows)

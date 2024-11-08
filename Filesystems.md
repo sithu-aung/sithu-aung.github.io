@@ -1,4 +1,4 @@
-# Storage Systems Guide: Partition Tables and Filesystems
+# Partition Tables and Filesystems
 
 IBM - 1983 - PC DOS version 2.0
     first disk segmentation -   1986 - CP-67 as minidisk

@@ -19,6 +19,40 @@ For checking where binary live - 'which' command
 /tmp  - temporary files
 /proc -to keep track of running process -  illusional file system - does not exists on disk, created by linux kernel 
 
+### LVM (logical Volume Management)
+#LVM
+
+sudo apt install lvm2
+
+lvmdiskscan
+
+pvcreate /dev/sda4
+
+vgcreate vg-main /dev/sda4
+(For adding more pv to vg ) 
+vgextend vg-main /dev/sda3 
+
+lvcreate -n home -L 25G vg-main
+
+mkfs.ext4 /dev/vg-main/home (/dev/vg name/lv name)
+Mount -t ext4 /dev/vg-main/home /mnt/home
+
+#Resizing
+lvextend -L 28G -n /dev/vg-main/home
+lvextend -l +100%FREE -n /dev/vg-main/home
+resize2fs /dev/vg-main/home
+
+#Removing
+lvremove /dev/vg-main/home
+
+#Snapshot
+lvcreate -s -n snapshot -L 5G /dev/vg-main/home
+
+#Restore from Snapshot
+lvconvert --merge vg-main/snapshot
+
+#Remove Snapshot
+lvremove vg-main/snapshot
 
 
 ##########################

@@ -45,12 +45,12 @@ GUID - Globally Unique IDentifier)
 
 ### FAT (File Allocation Table
 
-            Max File Size                     Max Volume Size 
-FAT 12       32MB/16MB (8KB/4KB Cluster)      32MB (8KB Cluster)
-FAT 16       2GB/4GB                          16GB
-FAT 32       4GB                              32GB (Window Format)
-                                              2TB (other OS)
-                                              16TB (theorectical)
+                Max File Size                     Max Volume Size 
+    FAT 12       32MB/16MB (8KB/4KB Cluster)      32MB (8KB Cluster)
+    FAT 16       2GB/4GB                          16GB
+    FAT 32       4GB                              32GB (Window Format)
+                                                  2TB (other OS)
+                                                  16TB (theorectical)
 
 - Very basic filesystem
 - Max file size: 2GB

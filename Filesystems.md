@@ -40,7 +40,7 @@ GUID - Globally Unique IDentifier)
 - Linux allows both bios and EFI firmware
 
 #Files System
-- Standards of organizg data on disk storage and applied to format disks
+- Standards of organizing data on disk storage and applied to format disks
 ## Microsoft Filesystems
 
 ### FAT (File Allocation Table

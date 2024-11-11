@@ -1,23 +1,23 @@
 
 ### File Directory
 
-/bin  - executable binary files
-/sbin - system binary files
-/lib  - shared code between binaries
-/usr  - also have its own /bin , /sbin
+      /bin  - executable binary files
+      /sbin - system binary files
+      /lib  - shared code between binaries
+      /usr  - also have its own /bin , /sbin
       - /local/bin - locally compiled binaries
-$PATH = tell linux where to find executables
-For checking where binary live - 'which' command
+      $PATH = tell linux where to find executables
+      For checking where binary live - 'which' command
 
-/etc  - et cetera - Editable Text Config
-/home - user data
-  ~   - shortcut to home
-/boot - booting linux 
-/dev  - devices - hardware,drivers
-/opt  - optional or add-on softwares
-/var  - variable files (log or cache files)
-/tmp  - temporary files
-/proc -to keep track of running process -  illusional file system - does not exists on disk, created by linux kernel 
+      /etc  - et cetera - Editable Text Config
+      /home - user data
+        ~   - shortcut to home
+      /boot - booting linux 
+      /dev  - devices - hardware,drivers
+      /opt  - optional or add-on softwares
+      /var  - variable files (log or cache files)
+      /tmp  - temporary files
+      /proc -to keep track of running process -  illusional file system - does not exists on disk, created by linux kernel 
 
 ### LVM (logical Volume Management)
 #LVM

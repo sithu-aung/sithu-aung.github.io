@@ -123,10 +123,14 @@ on a collection of items in logarithmic time (in worst case).
  ### 5. Priority Queue and Heaps
 
    ### Priority Queue - assending
-   ADT - Insert() , DeleteMin(), DeleteMax()
+   ADT - Insert() , DeleteMin(), DeleteMax(), GetMinimum(), GetMaximum()
 
    ### Direct Applications
    - Job scheduling, which is prioritized instead of serving in first come first serve.
+   - Data compression: Huffman Coding algorithm
+   - Shortest path algorithms: Dijkstra’s algorithm
+   - Minimum spanning tree algorithms: Prim’s algorithm
+   - Event-driven simulation: customers in a line
 
     
   

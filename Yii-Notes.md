@@ -191,6 +191,16 @@ new (yii\Web\Application($config))->run();
   - like find() , findOne() , save() , delete() (Customer()::find())
 
 
+  ### Attributes Typecasting
+  Limitations
+  - Float values are not converted and will be represented as strings , or may loose precision
+  - integer values depends on the integer capacity of the operation system you use.
+
+  PostgreSQL - array column decoded to an ArrayExpression
+  //For Query
+      
+       - $query->andWhere(['=', 'json', new ArrayExpression(['foo' => 'bar'])])
+
   ### Optimistics Locking
   - a way to prevent conflicts that may occur when a single row of data is being updated by multiple users
 
@@ -271,6 +281,13 @@ new (yii\Web\Application($config))->run();
    ### Lazy Loading and Eager Loading
    - Eager Loading is to solve N+1 query count problem
    - implementation (
+
+     Customer()::find()->with([
+        'country',
+        'orders' => function($query){
+          $query->andWhere(['status' => ORDER::STATUS_ACTIVE])
+        }
+     ]);
      
     Customer()::find()->with([
       'country',
@@ -283,6 +300,18 @@ new (yii\Web\Application($config))->run();
       ->joinWith('orders')
       ->where(['order.status' => Order::STATUS_ACTIVE])
       ->all();
+
+    // SELECT `customer`.* FROM `customer`
+    // LEFT JOIN `order` ON `order`.`customer_id` = `customer`.`id`
+    // WHERE `order`.`status` = 1
+    // 
+    // SELECT * FROM `order` WHERE `customer_id` IN (...)
+    $customers = Customer::find()
+        ->select('customer.*')
+        ->leftJoin('order', '`order`.`customer_id` = `customer`.`id`')
+        ->where(['order.status' => Order::STATUS_ACTIVE])
+        ->with('orders')
+        ->all();
 
 ### Restful API Services
 

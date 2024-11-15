@@ -132,6 +132,11 @@ on a collection of items in logarithmic time (in worst case).
    - Minimum spanning tree algorithms: Prim’s algorithm
    - Event-driven simulation: customers in a line
 
+  ### Heap 
+  - Binary Tree with Heap property - a node be >= or (<=) than values of its children
+  - Less than equal    => Min Heap
+  - Greater than equal => Max Heap
+
     
   
 

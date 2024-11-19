@@ -137,6 +137,17 @@ on a collection of items in logarithmic time (in worst case).
   - Less than equal    => Min Heap
   - Greater than equal => Max Heap
 
+
+### 6. Disjoint Set
+
+
+### 7. Graphs
+
+   - Objects and their relationships - eg Flights routes between cities
+   - Graph is a pair (V,E) - Vertices = nodes , Edges = pair of vertices
+
+   - မြှားပါရင် - Directed , မြှားမပါ - Undirected
+
     
   
 

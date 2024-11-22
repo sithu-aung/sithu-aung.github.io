@@ -1,6 +1,6 @@
 Data Structure Notes
 
-1. Primitive Data Types - int, float , char ,etc.,
+1. Primitive Data Types - int, float , char , bool ,etc.,
 2. User Defined Data Types - struct in C/C++, classes in JAVA
 
 1. Linear Data Structure -  Linked Lists, Stacks and Queues.

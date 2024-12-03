@@ -127,8 +127,47 @@ Switching/Pushing Stuff
 Packages - pre-commit & husky
 
 
+Useful Commands
 
-
+* git config --list --show-origin
+* git config —global user.name “username”
+* git config —global user.email “useremail”
+* git status ( for tracking files)
+* git log ( for commit history)
+* git log --pretty=format:"%h - %an, %ar : %s"
+* git log —pretty=format:”%h %s” —graph
+* git log —since=2.weeks
+* git log --pretty="%h - %s" --author='Junio C Hamano' --since="2008-10-01" \   --before="2008-11-01" --no-merges -- t/
+* git commit —amend (for undoing or overriding first commit)
+* git reset Head file_name (unstaging a staged file) 
+* git checkout -- file_name ( unmodifying modified file)
+* git restore —staged file_name (for unstage) ( instead of reset from V2.23.0 onwards)
+* git restore file_name ( to discard)
+* git remote -v (for showing remotes)
+* git remote add pb https://github.com/test
+* git fetch (only download data to local - but does not merge)
+* git remote show origin (for inspecting a remote)
+* git remote rename pb paul (renaming)
+* git remote remove paul (removing)
+* git tag -a v1.4 -m “Version 1.4” (creating annotated tag)
+* git tag v1.4-lw(creating lightweight tag)
+* git tag -a v1.2 commit_hash
+* git push origin <tagname> (for sharing tag to shared server) 
+* git config —global alias.co checkout
+* git config —global alias.br branch
+* git config —global alias.ci commit
+* git config —global alias.st status
+* git branch testing(create new branch)
+* git checkout testing(switching to existing branch)
+* git branch -d testing(deleting branch)
+* git merge testing ( merge to current checkout branch)
+* git mergetool (for visual merging)
+* git branch —merged/—no-merged
+* git branch —move bad-branch-name corrected-branch-name( rename local first)
+* git push —set-upstream origin corrected-branch-name( push to remote)
+* git branch —move master main ( rename master to main in local first)
+* git push —set-upstream origin main
+* git push origin —delete master(have done all tasks)
 
 
 

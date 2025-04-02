@@ -44,10 +44,10 @@ or
 
 
 ### Manually create the vendor directory
- - mkdir -p /var/www/social-test/vendor
+ - sudo mkdir -p /var/www/social-test/vendor
 
 ### Run Composer install
- - composer install
+ - sudo composer install
 
 ### Check disk space if needed
  - df -h
@@ -55,6 +55,10 @@ or
  - sudo apt-get install php-pgsql
 
  - sudo chmod 777 runtime/ web/assets/
+
+ (New One)
+ -  sudo chmod -R 775 /var/www/donation_backend/web/assets
+ -  sudo chown -R ubuntu:www-data /var/www/donation_backend/web/assets
 
 ### change Postgres user name/password(if Required)
 
@@ -72,7 +76,7 @@ or
 ### Default Server Configs
    - For Apache2 ( /etc/apache2/sites-available/000-default.conf)
 
-         VirtualHost *:80>
+         <VirtualHost *:80>
          # The ServerName directive sets the request scheme, hostname and port that
          # the server uses to identify itself. This is used when creating
          # redirection URLs. In the context of virtual hosts, the ServerName

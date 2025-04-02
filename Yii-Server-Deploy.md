@@ -160,6 +160,14 @@ or
     }
     }
 
+### .htaccess if required
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+
+
 ### Enable Remote Access to connect from Navicat
 
  - sudo nano /etc/postgresql/16/main/postgresql.conf

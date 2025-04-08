@@ -250,6 +250,14 @@ This function:
 4. If no rooms exist, creates a default room entry
 5. Returns the room list as JSON
 
+### Time Format Notes
+
+2020-12-09T16:09:53+00:00 is a date time value that is compliant by both standards.
+2020-12-09 16:09:53+00:00 uses a space to separate the date and time. This is allowed by RFC 3339 but not allowed by ISO 8601.
+2020-12-09T16:09:53-00:00 specifies a negative zero in the time offset. This is allowed by RFC 3339 but not allowed by ISO 8601.
+20201209T160953Z omits the hyphens and colons. This is allowed by ISO 8601 but not allowed by RFC 3339.
+ISO 8601 allows for things like ordinal dates such as 2020-344 which represents the 344th day of year 2020. RFC 3339 doesn't allow for that.
+
 ### Room Creation
 
 Rooms can be created dynamically when a broadcaster joins:

@@ -1,5 +1,5 @@
 # MOBILE APP DEVELOPMENT COURSE
-## From Beginner to App Creator in 12 Weeks
+## From Beginner to App Creator in 16 Weeks
 
 This course transforms students with no programming experience into mobile app creators. Students will learn essential coding skills, design beautiful app interfaces, and build their own fully functioning mobile applications that work on both iPhone and Android devices.
 
@@ -12,6 +12,7 @@ This course transforms students with no programming experience into mobile app c
 | **Module 1: Programming Foundations** | Weeks 1-4 | Learning to code with the Dart language |
 | **Module 2: Mobile App Interface Building** | Weeks 5-8 | Creating app screens with Flutter |
 | **Module 3: Complete App Development** | Weeks 9-12 | Building a real working mobile app |
+| **Module 4: Advanced App Features** | Weeks 13-16 | Adding professional features and app publishing |
 
 ---
 
@@ -113,13 +114,46 @@ This course transforms students with no programming experience into mobile app c
 | **File Storage** | • Save information to files<br>• Read data from saved files | • Build a note-taking feature<br>• Create data backup functions |
 | **State Management** | • Keep track of app information<br>• Share data across screens | • Create apps with shared data<br>• Build a shopping cart feature |
 
-### Week 12: Final Project
+### Week 12: Project Preparation
 | Topic | Learning Objectives | Activities |
 |-------|---------------------|------------|
 | **Project Planning** | • Define app requirements<br>• Plan screen designs | • Create app wireframes<br>• List app features |
 | **App Structure** | • Set up project organization<br>• Create navigation flow | • Build app skeleton<br>• Connect screens together |
 | **Feature Building** | • Implement core app features<br>• Connect to online data | • Create main app screens<br>• Integrate data services |
-| **Testing and Refinement** | • Test app functionality<br>• Improve app experience | • Find and fix issues<br>• Polish the interface |
+| **Initial Prototyping** | • Build a working prototype<br>• Test core functionality | • Create minimal viable product<br>• Test basic features |
+
+## MODULE 4: ADVANCED APP FEATURES
+
+### Week 13: User Authentication
+| Topic | Learning Objectives | Activities |
+|-------|---------------------|------------|
+| **User Accounts** | • Implement login and registration<br>• Manage user profiles | • Create login screens<br>• Build user registration flow |
+| **Authentication** | • Secure user information<br>• Implement login persistence | • Add authentication services<br>• Create secure login storage |
+| **User Profiles** | • Build user profile screens<br>• Allow profile customization | • Create profile editors<br>• Implement avatar selection |
+| **Account Management** | • Add password reset<br>• Implement account settings | • Create account recovery<br>• Build settings screens |
+
+### Week 14: Advanced UI Features
+| Topic | Learning Objectives | Activities |
+|-------|---------------------|------------|
+| **Animations** | • Add motion to interfaces<br>• Create engaging transitions | • Implement simple animations<br>• Add animated elements |
+| **Custom Widgets** | • Build advanced custom components<br>• Create reusable interface parts | • Create specialized widgets<br>• Build a widget library |
+| **Responsive Design** | • Make apps work on all screen sizes<br>• Adapt to different devices | • Test on multiple screen sizes<br>• Create adaptive layouts |
+| **Advanced Navigation** | • Implement complex navigation patterns<br>• Create app navigation structures | • Build tab and drawer navigation<br>• Add deep linking |
+
+### Week 15: App Polish & Performance
+| Topic | Learning Objectives | Activities |
+|-------|---------------------|------------|
+| **App Performance** | • Optimize app speed<br>• Reduce loading times | • Measure performance<br>• Implement optimizations |
+| **Error Handling** | • Create friendly error messages<br>• Handle network failures | • Add error screens<br>• Implement offline modes |
+| **Testing** | • Test app functionality<br>• Find and fix bugs | • Create test plans<br>• Use debugging tools |
+| **UI Polish** | • Add finishing touches<br>• Create polished interfaces | • Refine animations<br>• Improve visual details |
+
+### Week 16: App Completion & Publication
+| Topic | Learning Objectives | Activities |
+|-------|---------------------|------------|
+| **Final Integration** | • Connect all app features<br>• Complete end-to-end testing | • Final feature integration<br>• Comprehensive testing |
+| **App Store Preparation** | • Create app store listings<br>• Prepare submission materials | • Write app descriptions<br>• Create screenshots |
+| **Publishing Process** | • Understand app submission<br>• Learn store requirements | • Prepare for submission<br>• Learn approval processes |
 | **Final Presentation** | • Complete the app project<br>• Present the finished product | • Demonstrate app features<br>• Showcase creation process |
 
 ---
@@ -127,19 +161,22 @@ This course transforms students with no programming experience into mobile app c
 ## COURSE DETAILS
 
 ### Class Format
-- 3 instructor-led lessons per week (2 hours each)
+- 2 instructor-led lessons per week (2 hours each)
+- 2 guided practice sessions per week (2 hours each)
 - Simple assignments to reinforce learning (4-6 hours per week)
 
 ### What Students Will Create
 - Profile card app
 - Personal expense tracker
-- Final complete mobile application
+- Weather app with online data
+- Final complete mobile application with advanced features
 
 ### Course Investment
-- **Single student rate:** $1,200
+- **Single student rate:** $1,200 ($300 per month for 4 months)
 
 This rate includes:
-- All instructor-led sessions (36 sessions, 2 hours each)
+- All instructor-led sessions (32 sessions, 2 hours each)
+- All practice sessions (32 sessions, 2 hours each)
 - Course materials and code samples
 - Project review and feedback
 - Basic mentoring during the course
